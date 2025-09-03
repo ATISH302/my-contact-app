@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* ===============================
+   全体の基本スタイル
+=============================== */
+body {
+    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* コンテナ */
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 見出し */
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* ===============================
+   フォーム関連
+=============================== */
+form p {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* ===============================
+   エラーメッセージ
+=============================== */
+.error-message {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: block;
+}
+
+/* 成功メッセージ */
+.success-message {
+    color: #28a745;
+    font-size: 1rem;
+    margin: 15px 0;
+    text-align: center;
+}
+
+/* ===============================
+   ボタン
+=============================== */
+.button-group {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button,
+input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+/* メインボタン */
+.button,
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.button:hover,
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* セカンダリボタン */
+.button.secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.button.secondary:hover {
+    background-color: #5a6268;
+}
