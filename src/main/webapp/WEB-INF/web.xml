@@ -31,16 +31,7 @@
     <url-pattern>/InquiryDA0</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>nquiryServlet</display-name>
-    <servlet-name>nquiryServlet</servlet-name>
-    <servlet-class>com.example.inquiry.nquiryServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>nquiryServlet</servlet-name>
-    <url-pattern>/nquiryServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
+    
     <description></description>
     <display-name>LoginSerevlet</display-name>
     <servlet-name>LoginSerevlet</servlet-name>

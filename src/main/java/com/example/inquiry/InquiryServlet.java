@@ -1,4 +1,5 @@
 package com.example.inquiry;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,11 +15,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
-@MultipartConfig(
-fileSizeThreshold = 1024 * 1024 * 2,
-maxFileSize = 1024 * 1024 * 10,
-maxRequestSize = 1024 * 1024 * 50
-)
+
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, maxFileSize = 1024 * 1024 * 10, maxRequestSize = 1024 * 1024 * 50)
 @WebServlet("/inquiry")
 public class InquiryServlet extends HttpServlet {
 	private final InquiryDAO inquiryDAO = new InquiryDAO();
@@ -35,14 +33,15 @@ public class InquiryServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		// ログイン確認
 		HttpSession session = req.getSession(false);
 		if (session == null || session.getAttribute("user") == null) {
-		    resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
-		    return;
+			//		    resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
+			resp.sendRedirect(req.getContextPath() + "/login.jsp");
+			return;
 		}
-		
+
 		String action = req.getParameter("action");
 		if ("history".equals(action)) {
 			req.setAttribute("inquiries", inquiryDAO.getAllInquiries());
@@ -57,14 +56,15 @@ public class InquiryServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		// ログイン確認
 		HttpSession session = req.getSession(false);
 		if (session == null || session.getAttribute("user") == null) {
-		    resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
-		    return;
+			//		    resp.sendRedirect(req.getContextPath() + "/jsp/login.jsp");
+			resp.sendRedirect(req.getContextPath() + "/login.jsp");
+			return;
 		}
-		
+
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 		session = req.getSession();

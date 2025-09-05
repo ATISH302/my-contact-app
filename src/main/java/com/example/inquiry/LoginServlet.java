@@ -11,6 +11,13 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		    req.getRequestDispatcher("/login.jsp").forward(req, resp);
+	}
+	
+	
+	
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String username = req.getParameter("username");
@@ -20,10 +27,14 @@ public class LoginServlet extends HttpServlet {
         if (UserDAO.validateUser(username, password)) {
             HttpSession session = req.getSession();
             session.setAttribute("user", username);
-            resp.sendRedirect(req.getContextPath() + "/inquiry");
+            
+         //  ログイン成功後はトップページへ
+            resp.sendRedirect(req.getContextPath() + "/index.jsp");
         } else {
             req.setAttribute("error", "ユーザー名またはパスワードが違います");
-            req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
+//            req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+
         }
     }
 }

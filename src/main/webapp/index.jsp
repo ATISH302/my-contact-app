@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- <% response.sendRedirect(request.getContextPath() + "/jsp/login.jsp");%>
+ <%
+    // セッションからログインユーザーを確認
+    String user = (String) session.getAttribute("user");
+    if (user == null) {
+        // ログインしていなければ login.jsp にリダイレクト
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
