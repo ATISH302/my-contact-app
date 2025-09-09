@@ -122,3 +122,27 @@ input[type="submit"]:hover {
 .button.secondary:hover {
     background-color: #5a6268;
 }
+
+/* ===============================
+   ログアウト
+=============================== */
+
+.logout-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.logout-container .button.secondary {
+  background-color: #f44336; /* 赤系 */
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-container .button.secondary:hover {
+  background-color: #d32f2f;
+}
+
