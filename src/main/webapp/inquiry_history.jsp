@@ -16,12 +16,25 @@
 <body>
 
 	<div class="container">
+	
+	
+		  		<!-- 👇 ログアウトボタンを右上に配置 -->
+    <div class="logout-container">
+        <c:url var="logoutUrl" value="/logout"/>
+        <form action="${logoutUrl}" method="post" style="display:inline">
+            <button type="submit" class="button secondary">ログアウト</button>
+        </form>
+    </div>
+    	<!--ここまで👆-->
+	
+	
+	
 		<h1>お問い合わせ履歴</h1>
 	
 		<c:choose>
 			<c:when test="${not empty inquiries}">
 				<c:forEach var="inquiry" items="${inquiries}" varStatus="status">
-					<div class="inquiry-item">
+					<div class="inquiry-item" id="item-${status.index}">
 						
 						<h3>お問い合わせ #${status.count}</h3>
 						<p><strong>名前:</strong> <c:out value="${inquiry.name}"/></p>
@@ -53,6 +66,12 @@
 								<option value="完了" <c:if test="${inquiry.status == '完了'}">selected</c:if>>完了</option>
 							</select>
 							<input type="submit" value="更新" class="button secondary">
+							<!-- 編集ボタン（リンク） -->
+							<c:url var="editUrl" value="/inquiry">
+							  <c:param name="action" value="edit"/>
+							  <c:param name="index" value="${status.index}"/>
+							</c:url>
+							<a href="${editUrl}" class="button secondary">編集</a>
 						</form>
 					</div>
 					<hr>
@@ -64,10 +83,20 @@
 		</c:choose>
 		
 		<div class="button-group">
-			<a href="${historyUrl}" class="button secondary">お問い合わせフォームに戻る</a>
+			<a href="${topUrl}" class="button secondary">お問い合わせフォームに戻る</a>
 		</div>
 				
 	</div>
+	
+	<script>
+  (function() {
+    const el = document.querySelector(location.hash);
+    if (!el) return;
+    el.classList.add('highlight');
+    setTimeout(() => el.classList.remove('highlight'), 2500);
+  })();
+</script>
+	
 
 </body>
 </html>
